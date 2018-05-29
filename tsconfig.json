@@ -1,25 +1,9 @@
-{
-    "compilerOptions": {
-        "module": "commonjs",
+{"compilerOptions": {
+        "lib": ["es5", "es6"],
         "target": "es6",
-        "noImplicitAny": false,
+        "module": "commonjs",
+        "moduleResolution": "node",
         "emitDecoratorMetadata": true,
         "experimentalDecorators": true,
-        "sourceMap": true,
-        "declaration": false,
-        "noFallthroughCasesInSwitch": true,
-        "noImplicitReturns": true,
-        "stripInternal": true,
-        "strictNullChecks": true,
-        "moduleResolution": "node",
-        "outDir": "dist",
-        "newLine": "LF",
-        "lib": [
-            "es2017"
-        ]
-    },
-    "include": [
-        "src",
-        "test"
-    ]
-}
+        "sourceMap": true
+    }}
