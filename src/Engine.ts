@@ -10,7 +10,7 @@ export class Engine {
     constructor(
         private driver: AbstractDriver,
         public Options: EngineOptions
-    ) {}
+    ) { }
 
     public async createModelFromDatabase(): Promise<boolean> {
         let dbModel = await this.getEntitiesInfo(
@@ -68,6 +68,10 @@ export class Engine {
         databaseModel.entities.forEach(element => {
             element.Imports = [];
             element.Columns.forEach(column => {
+                // 跳过基类字段
+                if (['id', 'created_on', 'created_by', 'modified_on', 'modified_by'].indexOf(column.name)) {
+                    return
+                }
                 column.relations.forEach(relation => {
                     if (element.EntityName !== relation.relatedTable) {
                         element.Imports.push(relation.relatedTable);
@@ -75,7 +79,7 @@ export class Engine {
                 });
             });
             element.GenerateConstructor = this.Options.constructor;
-            element.Imports.filter(function(elem, index, self) {
+            element.Imports.filter(function (elem, index, self) {
                 return index === self.indexOf(elem);
             });
             let casedFileName = "";
@@ -167,28 +171,28 @@ export class Engine {
             else return str;
         });
         Handlebars.registerHelper({
-            eq: function(v1, v2) {
+            eq: function (v1, v2) {
                 return v1 === v2;
             },
-            ne: function(v1, v2) {
+            ne: function (v1, v2) {
                 return v1 !== v2;
             },
-            lt: function(v1, v2) {
+            lt: function (v1, v2) {
                 return v1 < v2;
             },
-            gt: function(v1, v2) {
+            gt: function (v1, v2) {
                 return v1 > v2;
             },
-            lte: function(v1, v2) {
+            lte: function (v1, v2) {
                 return v1 <= v2;
             },
-            gte: function(v1, v2) {
+            gte: function (v1, v2) {
                 return v1 >= v2;
             },
-            and: function(v1, v2) {
+            and: function (v1, v2) {
                 return v1 && v2;
             },
-            or: function(v1, v2) {
+            or: function (v1, v2) {
                 return v1 || v2;
             }
         });
