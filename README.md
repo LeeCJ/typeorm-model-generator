@@ -46,5 +46,5 @@ Options:
 ### Examples
 
 ```
-typeorm-generator -h 127.0.0.1 -p 3306 -d dbname -u root -x pwd -e mysql -o . --ce pascal --cp camel
+typeorm-generator-extend -h 127.0.0.1 -p 3306 -d dbname -u root -x pwd -e mysql -o . --ce pascal --cp camel
 ```
