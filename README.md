@@ -1,26 +1,12 @@
 # typeorm-model-generator
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/Kononnable/typeorm-model-generator.svg)](https://greenkeeper.io/)
-[![Build Status](https://travis-ci.org/Kononnable/typeorm-model-generator.svg?branch=master)](https://travis-ci.org/Kononnable/typeorm-model-generator)
-[![npm version](https://badge.fury.io/js/typeorm-model-generator.svg)](https://badge.fury.io/js/typeorm-model-generator)
-[![codecov](https://codecov.io/gh/Kononnable/typeorm-model-generator/branch/master/graph/badge.svg)](https://codecov.io/gh/Kononnable/typeorm-model-generator)
+[Kononnable/typeorm-model-generator](https://github.com/Kononnable/typeorm-model-generator)
 
-Generates models for TypeORM from existing databases.
-Suported db engines:
-* Microsoft SQL Server
-* PostgreSQL
-* MySQL
-* MariaDB
-* Oracle Database
-* SQLite
+ 为保证实体的正常使用，请更新typeorm到typeorm@0.2.0-alpha.44以上版本
 
-
-## Installation
-### Global module
-To install module globally simply type `npm i -g typeorm-model-generator` in your console.
-### Npx way
-Thanks to npx you can use npm modules without polluting global installs. So nothing to do here :)
->To use `npx` you need to use npm at version at least 5.2.0. Try updating your npm by `npm i -g npm`
+```
+npm i typeorm@next
+```
 ## Usage
 
 ```shell
@@ -56,32 +42,9 @@ Options:
   --generateConstructor  Generate constructor allowing partial initialization
                                                       [boolean] [default: false]
 ```
+
 ### Examples
 
-* Creating model from local MSSQL database
-   * Global module
-      ```
-      typeorm-model-generator -h localhost -d tempdb -u sa -x !Passw0rd -e mssql -o .
-      ````
-   * Npx Way
-      ```
-      npx typeorm-model-generator -h localhost -d tempdb -u sa -x !Passw0rd -e mssql -o .
-      ````
-* Creating model from local Postgres database, public schema with ssl connection
-   * Global module
-      ```
-      typeorm-model-generator -h localhost -d postgres -u postgres -x !Passw0rd -e postgres -o . -s public --ssl
-      ````
-   * Npx Way
-      ```
-      npx typeorm-model-generator -h localhost -d postgres -u postgres -x !Passw0rd -e postgres -o . -s public --ssl
-      ````
-* Creating model from SQLite database
-   * Global module
-      ```
-      typeorm-model-generator -d "Z:\sqlite.db" -e sqlite -o .
-      ````
-   * Npx Way
-      ```
-      npx typeorm-model-generator -d "Z:\sqlite.db" -e sqlite -o .
-      ````
+```
+typeorm-generator -h 127.0.0.1 -p 3306 -d dbname -u root -x pwd -e mysql -o . --ce pascal --cp camel
+```
