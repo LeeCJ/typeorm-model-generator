@@ -4,7 +4,7 @@ import { Entity, Column, } from 'typeorm';
 {{/each}}
 
 @Entity('{{EntityName}}'{{#Schema}}, { schema: '{{.}}' }{{/Schema}})
-{{#Indexes}}{{^isPrimaryKey}}@Index('{{name}}',[{{#columns}}'{{name}}',{{/columns}}]{{#isUnique}},{unique:true}{{/isUnique}})
+{{#Indexes}}{{^isPrimaryKey}}@Index('{{name}}',[{{#columns}}'{{toPropertyName name}}',{{/columns}}]{{#isUnique}},{unique:true}{{/isUnique}})
 {{/isPrimaryKey}}{{/Indexes}}export class {{toEntityName EntityName}} extends BaseEntity {
 {{#Columns}}
     {{^relations}} @Column('{{sql_type}}', { {{#is_generated}}
